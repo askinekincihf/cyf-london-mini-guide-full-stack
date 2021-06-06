@@ -6,8 +6,6 @@ const DropdownMenu = ({ option, setOption }) => {
         setOption(e.target.value);
     }
 
-    console.log(option)
-
     return (
         <div className="option mx-5 my-3 d-flex align-items-center">
             <label className="mx-2">Choose a city:</label>

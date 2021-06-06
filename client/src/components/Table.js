@@ -1,19 +1,29 @@
 import React from 'react'
 import TableRow from './TableRow'
 
-const Table = () => {
+const Table = ({ data }) => {
+
     return (
-        <table className="table table-striped">
+        <table className="table table-striped mx-5">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Website</th>
                 </tr>
             </thead>
             <tbody>
-                <TableRow />
+                {
+                    data?.map((item, index) => (
+                        <TableRow
+                            key={index}
+                            item={item}
+                            index={index}
+                        />
+                    ))
+                }
             </tbody>
         </table>
     )
