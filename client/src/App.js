@@ -3,9 +3,15 @@ import { useState } from "react";
 import Categories from "./components/Categories";
 import DropdownMenu from "./components/DropdownMenu";
 import Header from "./components/Header";
+import Table from "./components/Table"
 
 function App() {
   const [option, setOption] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState(undefined);
+
+  function handleCategoryChange(e) {
+    setSelectedCategory(e.target.id);
+  }
 
   return (
     <div className="App">
@@ -14,7 +20,8 @@ function App() {
         option={option}
         setOption={setOption}
       />
-      <Categories />
+      <Categories handleClick={handleCategoryChange} />
+      <Table />
     </div>
   );
 }

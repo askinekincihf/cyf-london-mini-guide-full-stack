@@ -15,6 +15,7 @@ const DropdownMenu = ({ option, setOption }) => {
                 className="form-select my-3" aria-label="Default select example"
                 onChange={handleOption}
             >
+                <option value="">Select a city</option>
                 <option value="harrow">Harrow</option>
                 <option value="heathrow">Heathrow</option>
                 <option value="stratford">Stratford</option>
