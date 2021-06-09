@@ -1,14 +1,16 @@
 import React from "react";
 
 const TableRow = ({ info, index }) => {
-  console.log(info);
+  const websiteString = info.website;
+  console.log(info.website, websiteString);
+
   return (
     <tr>
       <th scope="row">{index}</th>
       <td>{info.name}</td>
-      <td>ali</td>
       <td>{info.phone}</td>
-      <td>{info.address}</td> 
+      <td>{info.address}</td>
+      <td>{websiteString}</td>
     </tr>
   );
 };
