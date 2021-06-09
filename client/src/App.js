@@ -9,17 +9,26 @@ import dataAll from "./data";
 function App() {
   const [optionState, setOptionState] = useState("");
   const [categoryState, setCategoryState] = useState(undefined);
+  const [warning, setWarning] = useState(false);
+
+  function handleCategoryChange(value) {
+    setWarning(!optionState);
+    setCategoryState(value);
+  }
+  function handleOptionChange(value) {
+    setWarning(!value);
+    setOptionState(value);
+  }
   return (
     <div className="App">
       <Header />
-      <DropdownMenu options={Object.keys(dataAll)} setOption={setOptionState} />
+      <DropdownMenu options={Object.keys(dataAll)} setOption={handleOptionChange} />
+      {warning ? <p className="text-warning">First Select City</p> : null}
       <Categories
-        setState={setCategoryState}
+        setState={handleCategoryChange}
         categories={Object.keys(dataAll[Object.keys(dataAll)[0]])}
       />
-      <Table
-        data={dataAll.Heathrow.pharmacies}
-      />
+      <Table data={dataAll.Heathrow.pharmacies} />
     </div>
   );
 }
