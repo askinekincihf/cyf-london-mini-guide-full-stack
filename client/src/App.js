@@ -4,9 +4,6 @@ import Categories from "./components/Categories";
 import DropdownMenu from "./components/DropdownMenu";
 import Header from "./components/Header";
 import Table from "./components/Table";
-// import Harrow from "./data/Harrow.json"
-// import Heathrow from "./data/Heathrow.json"
-// import Stratford from "./data/Stratford.json"
 
 function App() {
   const [data, setData] = useState([])
@@ -16,12 +13,31 @@ function App() {
   function handleCategoryChange(e) {
     setSelectedCategory(e.target.id);
   }
+  // Fetch the data from Glitch
+  // useEffect(() => {
+  //   fetch(`https://askinekinci-london-mini-guide.glitch.me/${option}`)
+  //     .then(res => res.json())
+  //     .then(data => setData(data));
+  // }, [option]);
 
-  useEffect(() => {
-    fetch(`https://askinekinci-london-mini-guide.glitch.me/${option}`)
+  //Fetch the data from the server
+  // Option 1
+  // useEffect(() => {
+  //   fetchItems()
+  // }, [option]);
+
+  // const fetchItems = async () => {
+  //   const fetchedData = await fetch(`/${option}`);
+  //   const displayedData = await fetchedData.json();
+  //   setData(displayedData)
+  // };
+
+  // Option -2
+   useEffect(() => {
+    fetch(`/${option}`)
       .then(res => res.json())
       .then(data => setData(data));
-  }, [option])
+  }, [option]);
 
   return (
     <div className="App">
