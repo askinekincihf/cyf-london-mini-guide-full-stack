@@ -1,22 +1,29 @@
-import React from 'react'
-import TableRow from './TableRow'
+import React from "react";
+import TableRow from "./TableRow";
 
-const Table = () => {
-    return (
-        <table className="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                </tr>
-            </thead>
-            <tbody>
-                <TableRow />
-            </tbody>
-        </table>
-    )
-}
+const Table = ({ data = [], columns }) => {
+  console.log(data);
+  console.log(columns);
+  return (
+    <div className="m-5 table-responsive">
+      <table className="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Website</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((item, index) => (
+            <TableRow key={index} info={item} index={index + 1} />
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
 
-export default Table
+export default Table;

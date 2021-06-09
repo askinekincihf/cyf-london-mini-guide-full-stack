@@ -1,27 +1,25 @@
-import './App.css';
-import { useState } from "react";
+import "./App.css";
+import React, { useState } from "react";
 import Categories from "./components/Categories";
 import DropdownMenu from "./components/DropdownMenu";
 import Header from "./components/Header";
-import Table from "./components/Table"
+import Table from "./components/Table";
+import dataAll from "./data";
 
 function App() {
-  const [option, setOption] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState(undefined);
-
-  function handleCategoryChange(e) {
-    setSelectedCategory(e.target.id);
-  }
-
+  const [optionState, setOptionState] = useState("");
+  const [categoryState, setCategoryState] = useState(undefined);
   return (
     <div className="App">
       <Header />
-      <DropdownMenu
-        option={option}
-        setOption={setOption}
+      <DropdownMenu options={Object.keys(dataAll)} setOption={setOptionState} />
+      <Categories
+        setState={setCategoryState}
+        categories={Object.keys(dataAll[Object.keys(dataAll)[0]])}
       />
-      <Categories handleClick={handleCategoryChange} />
-      <Table />
+      <Table
+        data={dataAll.Heathrow.pharmacies}
+      />
     </div>
   );
 }

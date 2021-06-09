@@ -1,53 +1,29 @@
 import React from "react";
 
-const Categories = ({ handleClick }) => {
+const Categories = ({ setState, categories }) => {
   return (
     <div
       className="btn-group"
       role="group"
       aria-label="Basic radio toggle button group"
-      onChange={handleClick}
+      onChange={(e) => setState(e.target.id)}
     >
-      <input
-        type="radio"
-        className="btn-check"
-        id="pharmacies"
-        name="categories"
-        autoComplete="off"
-      />
-      <label className="btn btn-outline-primary m-2" htmlFor="pharmacies">
-        Pharmacies
-      </label>
-      <input
-        type="radio"
-        className="btn-check"
-        id="schools"
-        name="categories"
-        autoComplete="off"
-      />
-      <label className="btn btn-outline-primary m-2" htmlFor="schools">
-        Schools&Colleges
-      </label>
-      <input
-        type="radio"
-        className="btn-check"
-        id="hotels"
-        name="categories"
-        autoComplete="off"
-      />
-      <label className="btn btn-outline-primary m-2" htmlFor="hotels">
-        Hotels
-      </label>
-      <input
-        type="radio"
-        className="btn-check"
-        name="categories"
-        id="doctors"
-        autoComplete="off"
-      />
-      <label className="btn btn-outline-primary m-2" htmlFor="doctors">
-        Doctors
-      </label>
+      {categories.map((name) => {
+        return (
+          <div key={name}>
+            <input
+              type="radio"
+              className="btn-check"
+              id={name}
+              name="categories"
+              autoComplete="off"
+            />
+            <label className="btn btn-outline-primary m-2" htmlFor={name}>
+              {name}
+            </label>
+          </div>
+        );
+      })}
     </div>
   );
 };
