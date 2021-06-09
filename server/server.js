@@ -1,16 +1,12 @@
 const express = require("express");
+// const bodyParser = require("body-parser");
+const routesHandler = require("./routes/handler");
+
 const app = express();
-import cors from "cors"
+app.use("/", routesHandler);
 
-const corsOption = () => {
-    origin: "http://localhost:3000/"
-}
-
-app.use(cors(corsOption));
-
-app.get("/", (req, res) => {
-    res.send("Hello World")
-});
+// app.use(bodyParser.urlencoded({ extended: false }))
+// app.use(bodyParser.json());
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
+app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
