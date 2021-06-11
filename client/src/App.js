@@ -30,7 +30,8 @@ function App() {
         .then((data) => {
           setData(data);
           setIsLoading(false);
-        });
+        })
+        .catch((err) => console.log(err));
     }
   }
   return (
