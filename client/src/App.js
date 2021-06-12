@@ -15,6 +15,8 @@ function App() {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
+  const API_URL = "https://londonmini.herokuapp.com"; // "https://localhost:5000";
+
   function handleCategoryChange(value) {
     setCategoryState(value);
   }
@@ -25,7 +27,7 @@ function App() {
     }
     if (cityList.includes(value)) {
       setIsLoading(true);
-      fetch(`/${value}`)
+      fetch(`${API_URL}/${value}`)
         .then((res) => res.json())
         .then((data) => {
           setData(data);
